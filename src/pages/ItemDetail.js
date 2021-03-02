@@ -1,5 +1,6 @@
 import React,{useContext} from 'react';
 import {Context} from '../context/Context';
+import Ratings from '../components/Ratings';
 
 export default function ItemDetail() {
     const {itemDetail} = useContext(Context);
@@ -12,6 +13,7 @@ export default function ItemDetail() {
                     <div>
                         <img src={item.imageUrl} alt={item.name}/>
                         <h2>{item.name}</h2>
+                        <Ratings avgRating={item.avgRating}/>
                     </div>
                 )
             })}
