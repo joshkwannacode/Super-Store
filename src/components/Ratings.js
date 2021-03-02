@@ -5,7 +5,7 @@ import Empty from "../media/stars/star-empty.svg";
 
 export default function Ratings({avgRating}) {
     const starArr=[];
-    
+    //credit to mhoobler
     if (avgRating % 1 === 0) {
         for (let i = 0; i < 5; i++) {
           i < avgRating ? starArr.push(Full) : starArr.push(Empty);
@@ -20,7 +20,7 @@ export default function Ratings({avgRating}) {
             : starArr.push(Empty);
         }
       }
-    //   console.log("starArr",starArr)
+    
     return (
         <div>
             {starArr.map(a=>{
