@@ -1,7 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
-
-import Deals from "../components/deals/Deals";
+import Deals from "../pages/Deals";
 
 const deals = () => <Route exact path="/deals" component={Deals} />;
 

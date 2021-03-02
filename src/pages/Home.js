@@ -1,8 +1,7 @@
 import React, {useState,useEffect,useContext} from 'react';
-import ItemCard from './ItemCard';
-import getItemList from '../../api/getItemList';
-
-import {Context} from '../../context/Context';
+import ItemCard from '../components/itemCard/index';
+import getItemList from '../api/getItemList';
+import {Context} from '../context/Context';
 
 export default function Home() {
     const {items,setItems} = useContext(Context);
@@ -16,7 +15,7 @@ export default function Home() {
 
     return (
         <div>
-            <ItemCard itemDetails={items}/>
+            <ItemCard details={items}/>
         </div>
     )
 }

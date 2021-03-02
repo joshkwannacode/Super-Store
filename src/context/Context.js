@@ -3,22 +3,37 @@ export const Context = createContext();
 
 export const ContextProvider =props=>{
     const [items, setItems] = useState([]);
+    const [cart, setCart] = useState([]);
     const [completedOrPending, setCompletedOrPending] =useState(false);
+    const [itemDetail, setItemDetail] = useState();
 
-    const addItems =(item)=>{
-        setItems([...items,{item}]);
-    }
+    const addToCart =(item)=>{
+        setCart(...cart,{item})
+    };
     const deleteItem= id =>{
-        setItems(items.filter(item=>item.id!==id));
-    }
+        setCart(cart.filter(item=>item.id!==id));
+    };
+    const decreaseQuantity=()=>{
 
+    };
+    const increaseQuantity=()=>{
+
+    };
+    const handleItemDetail=id=>{
+        const findId= items.find(task=>task._id===id);
+        setItemDetail([findId]);
+    }
     return(
         <Context.Provider
         value={{
             items,
             setItems,
-            addItems,
+            cart,
+            addToCart,
             deleteItem,
+            itemDetail,
+            setItemDetail,
+            handleItemDetail,
             completedOrPending,
             setCompletedOrPending
         }}>
