@@ -5,10 +5,9 @@ import getItemById from '../api/getItemById';
 
 
 export default function ItemDetail({
-    match: {
-    params: { itemId }
-    }
-  }) {
+    match:{
+    params:{itemId}
+}}) {
     const [item,setItem] = useState();
 
     useEffect(() => {
