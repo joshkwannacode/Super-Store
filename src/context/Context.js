@@ -21,7 +21,7 @@ export const ContextProvider =props=>{
     };
     const handleItemDetail=id=>{
         const findId= items.find(task=>task._id===id);
-        setItemDetail([findId]);
+        setItemDetail(findId);
     }
     return(
         <Context.Provider
