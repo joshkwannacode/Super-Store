@@ -13,22 +13,19 @@ export default function ItemDetail({
 
     useEffect(() => {
         getItemById(itemId)
-        .then((res) =>setItem([res]))
+        .then((res) =>setItem(res))
     },[itemId])
 
     console.log("params",item)
     return (
         <div>
-            {item?item.map((itemDetail)=>{
-                return(
-                    <>
-                        <img src={itemDetail.imageUrl} alt={itemDetail.name}/>
-                        <h2>{itemDetail.name}</h2>
-                        <Ratings avgRating={itemDetail.avgRating}/>
-                        <Price price={itemDetail.price} isOnSale={itemDetail.isOnSale}/>
-                    </>
-                )
-            }):null}
+            {item?
+                <div>
+                    <img src={item.imageUrl} alt={item.name}/>
+                    <h2>{item.name}</h2>
+                    <Ratings avgRating={item.avgRating}/>
+                    <Price price={item.price} isOnSale={item.isOnSale}/>
+                </div>:null}
         </div>
     )
 }
