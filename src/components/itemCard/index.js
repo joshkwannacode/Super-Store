@@ -1,30 +1,22 @@
 import React,{useContext,useState} from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
-import {Context} from '../../context/Context';
 import Ratings from '../Ratings';
 import Price from '../Price';
 
 export default function ItemCard({details}) {
-    const {handleItemDetail} = useContext(Context);
-    // console.log("why",itemDetails)
-
     return (
         <>
-            {details.map(detail=>{
-                return(
-                    <div key={detail._id}>
-                        <img src={detail.imageUrl} alt={detail.name}/>
-                        <p>{detail.description}</p>
-                        <Ratings avgRating={detail.avgRating}/>
-                        <Price price={detail.price} isOnSale={detail.isOnSale}/>
+            <div key={details._id}>
+                <img src={details.imageUrl} alt={details.name}/>
+                <p>{details.description}</p>
+                <Ratings avgRating={details.avgRating}/>
+                <Price price={details.price} isOnSale={details.isOnSale}/>
 
-                        <button onClick={()=>handleItemDetail(detail._id)}>
-                            <Link to={`/itemDetail/${detail._id}`}>View Item</Link>
-                        </button>
-                    </div>
-                )
-            })}
+                <button>
+                    <Link to={`/itemDetail/${details._id}`}>View Item</Link>
+                </button>
+            </div>
         </>
     )
 }

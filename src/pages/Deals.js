@@ -7,13 +7,20 @@ export default function Deals() {
     
     useEffect(() => {
         getItemList()
-        .then(res=>setFilteredItems(res.filter(saleItems=>saleItems.isOnSale===true)))
+        .then(res=>{
+            const filtered = res.items.filter(saleItems=>saleItems.isOnSale===true);
+            setFilteredItems(filtered);
+        })
     },[])
 
     console.log("deals",filteredItems);
     return (
         <>
-            <ItemCard details={filteredItems}/>
+            {filteredItems?filteredItems.map(item=>{
+                return(
+                    <ItemCard details={item}/>
+                )
+            }):null}
         </>
     )
 }

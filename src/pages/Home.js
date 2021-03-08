@@ -4,7 +4,7 @@ import getItemList from '../api/getItemList';
 import {Context} from '../context/Context';
 
 export default function Home() {
-    const {items,setItems} = useContext(Context);
+    const [items,setItems] = useState([]);
     
     useEffect(()=>{
         getItemList()
@@ -15,7 +15,11 @@ export default function Home() {
 
     return (
         <div>
-            <ItemCard details={items}/>
+            {items.map((item)=>{
+                return(
+                <ItemCard details={item}/>
+                )
+            })}
         </div>
     )
 }
