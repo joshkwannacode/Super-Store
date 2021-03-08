@@ -1,9 +1,8 @@
 import React,{useState,useEffect} from 'react';
-import {Context} from '../context/Context';
 import Ratings from '../components/Ratings';
 import Price from '../components/Price';
 import getItemById from '../api/getItemById';
-import { useParams } from "react-router-dom";
+
 
 export default function ItemDetail({
     match: {
