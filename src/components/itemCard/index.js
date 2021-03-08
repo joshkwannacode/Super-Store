@@ -20,7 +20,7 @@ export default function ItemCard({details}) {
                         <Price price={detail.price} isOnSale={detail.isOnSale}/>
 
                         <button onClick={()=>handleItemDetail(detail._id)}>
-                            <Link to={'/itemDetail'}>View Item</Link>
+                            <Link to={`/itemDetail/${detail._id}`}>View Item</Link>
                         </button>
                     </div>
                 )

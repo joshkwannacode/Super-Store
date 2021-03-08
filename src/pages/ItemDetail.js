@@ -1,24 +1,35 @@
-import React,{useContext} from 'react';
+import React,{useState,useEffect} from 'react';
 import {Context} from '../context/Context';
 import Ratings from '../components/Ratings';
 import Price from '../components/Price';
+import getItemById from '../api/getItemById';
+import { useParams } from "react-router-dom";
 
-export default function ItemDetail() {
-    const {itemDetail} = useContext(Context);
+export default function ItemDetail({
+    match: {
+    params: { itemId }
+    }
+  }) {
+    const [item,setItem] = useState();
 
-    console.log("itemdeet",itemDetail);
+    useEffect(() => {
+        getItemById(itemId)
+        .then((res) =>setItem([res]))
+    },[itemId])
+
+    console.log("params",item)
     return (
         <div>
-            {itemDetail.map(item=>{
+            {item?item.map((itemDetail)=>{
                 return(
-                    <div>
-                        <img src={item.imageUrl} alt={item.name}/>
-                        <h2>{item.name}</h2>
-                        <Ratings avgRating={item.avgRating}/>
-                        <Price price={item.price} isOnSale={item.isOnSale}/>
-                    </div>
+                    <>
+                        <img src={itemDetail.imageUrl} alt={itemDetail.name}/>
+                        <h2>{itemDetail.name}</h2>
+                        <Ratings avgRating={itemDetail.avgRating}/>
+                        <Price price={itemDetail.price} isOnSale={itemDetail.isOnSale}/>
+                    </>
                 )
-            })}
+            }):null}
         </div>
     )
 }

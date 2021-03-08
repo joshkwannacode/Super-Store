@@ -1,6 +1,7 @@
 import React,{useContext,useState,useEffect} from 'react';
 import {Context} from '../context/Context';
 import ItemCard from '../components/itemCard';
+import getItemList from '../api/getItemList';
 
 export default function Deals() {
     const {items,setItems} = useContext(Context);
@@ -8,7 +9,8 @@ export default function Deals() {
     
     // should I call the api here too instead of using context?
     useEffect(() => {
-        setFilteredItems(items.filter(saleItems=>saleItems.isOnSale===true))
+        getItemList()
+        .then(res=>console.log(res))
     },[])
 
     console.log("deals",filteredItems);
