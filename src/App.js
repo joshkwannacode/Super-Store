@@ -3,9 +3,10 @@ import Home from "./routes/home";
 import Cart from "./routes/cart";
 
 import Deals from "./routes/deals";
-import Nav from "./components/nav/Nav";
+import Nav from "./components/nav";
 
 import Context from "./context/Context";
+import ItemDetail from "./routes/itemDetail";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Home />
         <Cart />
         <Deals />
+        <ItemDetail />
       </Router>
     </Context>
   );
