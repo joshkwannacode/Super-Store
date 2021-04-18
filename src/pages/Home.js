@@ -7,6 +7,7 @@ export default function Home() {
     const [items,setItems] = useState([]);
     const [searchItem, setSearchItem] = useState();
     const [itemBackUp, setItemBackUp] = useState([]);
+    const [noItemError, setNoItemError] = useState(false);
 
     useEffect(()=>{
         getItemList()
@@ -20,32 +21,38 @@ export default function Home() {
         const filtereditems = e.target.value?items.filter(item =>{
             return item.name.toLowerCase().includes(e.target.value.toLowerCase());
           }):itemBackUp;
-        const check = filtereditems.length>0;
-
-        if(check){
-              setItems(filtereditems);
-        } 
+        
+        setItems(filtereditems);
           
     };
     const handleSubmit=()=>{
-        const filtereditems = searchItem?items.filter(item =>{
+        const filtereditems = items.filter(item =>{
                     return item.name.toLowerCase().includes(searchItem.toLowerCase());
-                  }):itemBackUp;
-        
-        const check = filtereditems.length>0;
+                  });
+                  
+        console.log("false or not", filtereditems)
 
-        if(check){
-              setItems(filtereditems);
-        } 
+        if(filtereditems.length>0){
+            setItems(filtereditems);
+            setNoItemError(false);
+        }else{
+            setNoItemError(true);
+        }          
+        
+
     };
     return (
         <div>
             <SearchBar handleSearch={handleSearch} handleSubmit={handleSubmit} />
-            {items.map((item)=>{
+            {!noItemError?items.map((item)=>{
                 return(
                 <ItemCard details={item}/>
                 )
-            })}
+            }):
+                <div>
+                    <h3>Error: No Items match search</h3>
+                </div>
+            }
         </div>
     )
 }
