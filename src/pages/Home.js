@@ -22,7 +22,12 @@ export default function Home() {
             return item.name.toLowerCase().includes(e.target.value.toLowerCase());
           }):itemBackUp;
         
-        setItems(filtereditems);
+        //   if(filtereditems.length>0){
+            setItems(filtereditems);
+            setNoItemError(false);
+        // }else{
+        //     setNoItemError(false);
+        // }
           
     };
     const handleSubmit=()=>{
