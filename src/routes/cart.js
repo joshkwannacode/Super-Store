@@ -1,7 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
-
-import Cart from "../components/cart/Cart";
+import Cart from "../pages/Cart";
 
 const cart = () => <Route exact path="/cart" component={Cart} />;
 
